@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Hotel Booking Form</title>
+    <!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-image: url(hotel.jfif);
+            background-size: cover;
+            height: 100vh;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 1rem;
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        input,
+        select {
+            padding: 0.5rem;
+            font-size: 1rem;
+            border-radius: 0.25rem;
+            border: 1px solid #ccc;
+        }
+
+        button[type="submit"] {
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 0.25rem;
+            border: none;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0069d9;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Hotel Booking Form</h1>
+    <form>
+        <label for="name">Name:</label>
+        <input type="text" id="name" required><br><br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" required><br><br>
+        <label for="room-type">Room Type:</label>
+        <select id="room-type">
+            <option value="standard">Standard</option>
+            <option value="deluxe">Deluxe</option>
+            <option value="suite">Suite</option>
+        </select><br><br>
+        <label for="guests">Number of Guests:</label>
+        <input type="number" id="guests" required><br><br>
+        <label for="start-date">Start Date:</label>
+        <input type="date" id="start-date" required><br><br>
+        <label for="end-date">End Date:</label>
+        <input type="date" id="end-date" required><br><br>
+        <button type="submit">Book Room</button>
+    </form>
+    <script>
+        const form = document.querySelector("form");
+        const nameInput = document.getElementById("name");
+        const emailInput = document.getElementById("email");
+        const roomTypeSelect = document.getElementById("room-type");
+        const guestsInput = document.getElementById("guests");
+        const startDateInput = document.getElementById("start-date");
+        const endDateInput = document.getElementById("end-date");
+
+        form.addEventListener("submit", validateForm);
+
+        function validateForm(event) {
+            event.preventDefault();
+
+            if (!nameInput.value) {
+                alert("Please enter your name.");
+                return;
+            }
+            if (!emailInput.value) {
+                alert("Please enter your email address.");
+                return;
+            }
+            if (!guestsInput.value) {
+                alert("Please enter the number of guests.");
+                return;
+            }
+            if (!startDateInput.value) {
+                alert("Please enter a start date.");
+                return;
+            }
+            if (!endDateInput.value) {
+                alert("Please enter an end date.");
+                return;
+            }
+
+            const roomType = roomTypeSelect.options[roomTypeSelect.selectedIndex].value;
+            const guests = guestsInput.value;
+            const startDate = startDateInput.value;
+            const endDate = endDateInput.value;
+
+            alert(`Booking confirmed!\nName: ${nameInput.value}\nEmail: ${emailInput.value}\nRoom Type: ${roomType}\nGuests: ${guests}\nStart Date: ${startDate}\nEnd Date: ${endDate}`);
+        }
+
+    </script>
+</body>
+
+</html>
